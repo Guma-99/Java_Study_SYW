@@ -5,7 +5,7 @@
 
 <mapper namespace="com.yw.home.bankbook.BankBookDAO">
 	<insert id="setBook" parameterType="com.yw.home.bankbook.BankBookDTO">
-		INSERT INTO BANKBOOK VALUES (TimeStamp, #{bookName}, #{bookRate}, 1)
+		INSERT INTO BANKBOOK VALUES (#{bookNum}, #{bookName}, #{bookRate}, 1)
 	</insert>
 	
 	<update id="setUpdate" parameterType="com.yw.home.bankbook.BankBookDTO">
