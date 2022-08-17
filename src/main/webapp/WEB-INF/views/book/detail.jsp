@@ -10,11 +10,6 @@
 </head>
 <body>
 <h1>Detail Page</h1>
-<!-- 상대경로 -->
-<a href="../member/login.do">Login</a>
-<!-- 절대경로 -->
-<a href = "/member/join.do">Join</a>
-<br><br>
 <table border = "1">
 	<thead>
 		<tr>
