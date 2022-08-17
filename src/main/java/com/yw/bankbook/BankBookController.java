@@ -69,7 +69,7 @@ public class BankBookController {
 		int result = bankBookService.setUpdate(bankBookDTO);
 		if(result>0) {
 			System.out.println("성공");
-			modelAndView.setViewName("redirect:./detail.do?booknum="+bankBookDTO.getBookNum());
+			modelAndView.setViewName("redirect:./detail.do?bookNum="+bankBookDTO.getBookNum());
 		}
 		return modelAndView;
 	}
