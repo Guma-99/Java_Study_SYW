@@ -8,23 +8,23 @@
 		INSERT INTO BANKBOOK VALUES (5432769, #{bookName}, #{bookRate}, 1)
 	</insert>
 	
-	<update id="setUpdate" parameterType="com.yw.bankbook.BankBookDTO">
+	<update id="setUpdate" parameterType="com.yw.home.bankbook.BankBookDTO">
 		UPDATE BANKBOOK SET BOOKNAME= #{bookName}, BOOKRATE=#{bookRate} WHERE BOOKNUM = #{bookNum}
 	</update>
 	
-	<update id="setChangeSale" parameterType="com.yw.bankbook.BankBookDTO">
+	<update id="setChangeSale" parameterType="com.yw.home.bankbook.BankBookDTO">
 		UPDATE BANKBOOK SET BOOKSALE = #{bookSale} WHERE BOOKNUM = #{bookNum}
 	</update>
 
-	<select id="getList" resultType="com.yw.bankbook.BankBookDTO">
+	<select id="getList" resultType="com.yw.home.bankbook.BankBookDTO">
 		SELECT * FROM BANKBOOK ORDER BY BOOKNUM DESC
 	</select>
 	
-	<select id="getDetail" parameterType="com.yw.bankbook.BankBookDTO" resultType="com.yw.bankbook.BankBookDTO">
+	<select id="getDetail" parameterType="com.yw.home.bankbook.BankBookDTO" resultType="com.yw.home.bankbook.BankBookDTO">
 		SELECT * FROM BANKBOOK WHERE BOOKNUM = #{bookNum}
 	</select>
 	
-	<delete id="deleteBook" parameterType="com.yw.bankbook.BankBookDTO">
+	<delete id="deleteBook" parameterType="com.yw.home.bankbook.BankBookDTO">
 		DELETE BANKBOOK WHERE BOOKNUM = #{bookNum}
 	</delete>
 
