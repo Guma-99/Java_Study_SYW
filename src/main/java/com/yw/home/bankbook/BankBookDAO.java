@@ -1,4 +1,4 @@
-package com.yw.bankbook;
+package com.yw.home.bankbook;
 
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
@@ -16,7 +16,7 @@ public class BankBookDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE="com.yw.bankbook.BankBookDAO.";
+	private final String NAMESPACE="com.yw.home.bankbook.BankBookDAO.";
 	
 	public int setBook(BankBookDTO bankBookDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setBook", bankBookDTO);

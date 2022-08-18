@@ -1,4 +1,4 @@
-package com.yw.bankbook;
+package com.yw.home.bankbook;
 
 public class BankBookDTO {
 
