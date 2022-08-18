@@ -1,5 +1,6 @@
 package com.yw.home.bankbook;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -18,6 +19,8 @@ public class BankBookController {
 	
 	@Autowired
 	private BankBookService bankBookService;
+	
+	
 	
 	@RequestMapping (value = "list.do", method = RequestMethod.GET)
 	public void list(Model model) throws Exception {
@@ -41,9 +44,11 @@ public class BankBookController {
 		System.out.println("add GET");
 	}
 	
-	@RequestMapping (value = "add", method = RequestMethod.POST)
+	@RequestMapping (value = "add.do", method = RequestMethod.POST)
 	public ModelAndView addBook(BankBookDTO bankBookDTO) throws Exception {
 		System.out.println("add POST");
+		Calendar cal = Calendar.getInstance();
+		bankBookDTO.setBookNum((Long)cal.getTimeInMillis());
 		int result = bankBookService.setBook(bankBookDTO);
 		if(result==1) {
 			System.out.println("계좌 추가 성공");
