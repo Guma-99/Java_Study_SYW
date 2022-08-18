@@ -9,7 +9,7 @@
 <body>
 	<h1>login page</h1>
 
-	<form action="./login.gm" method="post">
+	<form action="./login.do" method="post">
 		<table border="1">
 			<tr>
 				<th>ID</th>
