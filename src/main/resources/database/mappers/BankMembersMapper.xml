@@ -10,7 +10,7 @@
 	<select id="getLogin"
 		parameterType="com.yw.home.BankMembers.BankMembersDTO"
 		resultType="com.yw.home.BankMembers.BankMembersDTO">
-		SELECT USERNAME, NAME FROM BANKMEMBERS WHERE USERNAME =	#{userName} AND PASSWORD = #{passWord}
+		SELECT USERNAME, NAME FROM BANKMEMBERS WHERE USERNAME =	#{userName} AND PASSWORD = #{password}
 		</select>
 
 </mapper>

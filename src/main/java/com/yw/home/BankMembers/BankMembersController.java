@@ -14,7 +14,7 @@ import com.yw.home.BankMembers.BankMembersDTO;
 
 @Controller
 @RequestMapping (value = "/member/*")
-public class BbankMembersController {
+public class BankMembersController {
 	
 	@Autowired
 	private BankMembersService bankMembersService;
@@ -39,10 +39,10 @@ public class BbankMembersController {
 		return "redirect:../";
 	}
 
-	@RequestMapping(value = "logout.gm", method = RequestMethod.GET)
-	public String logout(HttpSession session) throws Exception {
-		session.invalidate();
-
-		return "redirect:../";
-	}
+//	@RequestMapping(value = "logout.gm", method = RequestMethod.GET)
+//	public String logout(HttpSession session) throws Exception {
+//		session.invalidate();
+//
+//		return "redirect:../";
+//	}
 }

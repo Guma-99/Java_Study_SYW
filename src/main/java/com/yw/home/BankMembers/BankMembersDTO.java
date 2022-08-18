@@ -6,7 +6,7 @@ public class BankMembersDTO {
 	private String name;
 	private String email;
 	private String phone;
-
+	
 	public String getUserName() {
 		return userName;
 	}
@@ -37,5 +37,7 @@ public class BankMembersDTO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
+
 	
 }

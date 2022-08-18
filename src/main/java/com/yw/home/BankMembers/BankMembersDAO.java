@@ -2,14 +2,16 @@ package com.yw.home.BankMembers;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.yw.home.BankMembers.BankMembersDTO;
 
+@Repository("myDAO")
 public class BankMembersDAO {
 
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE = "com.gm.start.bankMembers.BankMembersDAO.";
+	private final String NAMESPACE = "com.yw.home.BankMembers.BankMembersDAO.";
 
 	public BankMembersDTO getLogin(BankMembersDTO bankMembersDTO) throws Exception {
 
