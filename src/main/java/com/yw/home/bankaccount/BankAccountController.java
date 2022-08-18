@@ -25,7 +25,7 @@ public class BankAccountController {
 		int result = service.setAccount(bankAccountDTO);
 		if(result>0) {
 			System.out.println("추가 성공");
-			modelAndView.setViewName("redirect:./list.do");
+			modelAndView.setViewName("redirect:../");
 			return modelAndView;
 		} else {
 			return modelAndView;
