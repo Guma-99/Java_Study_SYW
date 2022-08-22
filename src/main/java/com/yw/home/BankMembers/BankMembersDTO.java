@@ -1,12 +1,15 @@
 package com.yw.home.BankMembers;
 
+import java.util.List;
+
 public class BankMembersDTO {
 	private String userName;
 	private String password;
 	private String name;
 	private String email;
 	private String phone;
-	
+	private List<BankMembersDTO> bankMembersDTO;
+
 	public String getUserName() {
 		return userName;
 	}

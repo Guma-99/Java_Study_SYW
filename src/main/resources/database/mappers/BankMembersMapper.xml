@@ -7,20 +7,20 @@
 <mapper namespace="com.yw.home.BankMembers.BankMembersDAO">
 
 	<!-- id는 DAO의 메서드명과 동일하게 -->
-	<select id="getLogin"
-		parameterType="com.yw.home.BankMembers.BankMembersDTO"
-		resultType="com.yw.home.BankMembers.BankMembersDTO">
-		SELECT USERNAME, NAME FROM BANKMEMBERS WHERE USERNAME =  #{userName} AND PASSWORD = #{password}
+	<select id="getLogin" parameterType="com.yw.home.BankMembers.BankMembersDTO" resultType="com.yw.home.BankMembers.BankMembersDTO">
+		SELECT USERNAME, NAME FROM BANKMEMBERS WHERE USERNAME = #{userName} AND PASSWORD = #{password}
 	</select>
 
-	<select id="getSearchByID" parameterType="java.lang.String"
-		resultType="com.yw.home.BankMembers.BankMembersDTO">
+	<select id="getSearchByID" parameterType="java.lang.String" resultType="com.yw.home.BankMembers.BankMembersDTO">
 		SELECT * FROM BANKMEMBERS WHERE USERNAME LIKE '%'||#{search}||'%' order by username ASC
 	</select>
 
-	<insert id="setJoin"
-		parameterType="com.yw.home.BankMembers.BankMembersDTO">
+	<insert id="setJoin" parameterType="com.yw.home.BankMembers.BankMembersDTO">
 		INSERT INTO BANKMEMBERS VALUES(#{userName},#{password},#{name},#{email},#{phone})
 	</insert>
 
+	<select id="getMyPage" parameterType="BankMembersDTO" resultType="BankMembersDTO">
+		SELECT USERNAME, NAME, EMAIL, PHONE FROM BANKMEMBERS WHERE USERNAME = #{userName}
+	</select>
+	
 </mapper>

@@ -1,6 +1,7 @@
 package com.yw.home.BankMembers;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,9 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.yw.home.BankMembers.BankMembersService;
-import com.yw.home.BankMembers.BankMembersDTO;
 
 @Controller
 @RequestMapping(value = "/member/*")
@@ -91,5 +89,20 @@ public class BankMembersController {
 		System.out.println("List Get 실행");
 
 		return "member/list";
+	}
+
+	@RequestMapping(value = "myPage.do", method = RequestMethod.GET)
+	public ModelAndView myPage(HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+
+		System.out.println("MyPage Get 실행");
+
+		BankMembersDTO bankMembersDTO = (BankMembersDTO) session.getAttribute("member");
+		Map<String, Object> map = bankMembersService.getMyPage(bankMembersDTO);
+		mv.addObject("map", map);
+		
+		mv.setViewName("member/myPage");
+
+		return mv;
 	}
 }
