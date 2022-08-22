@@ -1,9 +1,11 @@
 package bankbookMembers;
 
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.Test;
-import org.mybatis.spring.batch.MyBatisBatchItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.yw.home.MyAbstractTest;
 import com.yw.home.BankMembers.BankMembersDAO;
 import com.yw.home.BankMembers.BankMembersDTO;
 
