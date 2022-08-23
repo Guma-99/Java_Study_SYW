@@ -16,6 +16,7 @@ public class BankAccountController {
 	@RequestMapping (value="add.do", method=RequestMethod.GET)
 	public void setAccount() {
 		System.out.println("AccountGet");
+
 	}
 	
 	@RequestMapping (value="add.do", method=RequestMethod.POST)

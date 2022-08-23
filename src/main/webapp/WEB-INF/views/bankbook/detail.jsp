@@ -35,7 +35,7 @@
 <a href= "./update.do?bookNum=${one.bookNum}">수정하기</a>
 <a href="./delete.do?bookNum=${one.bookNum}">삭제하기</a>
 <c:if test="${not empty sessionScope.member}">
-<a href="../bankAccount/add.do?bookNum=${one.bookNum}">가입하기</a>
+<a href="../bankAccount/add.do">가입하기</a>
 </c:if>
 
 </body>
