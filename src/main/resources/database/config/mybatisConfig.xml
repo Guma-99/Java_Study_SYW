@@ -7,6 +7,11 @@
 		<typeAlias type="com.yw.home.BankMembers.BankMembersDTO" alias="BankMembersDTO"/>
 		<typeAlias type="com.yw.home.bankaccount.BankAccountDTO" alias="BankAccountDTO"/>
 		<typeAlias type="com.yw.home.bankbook.BankBookDTO" alias="BankBookDTO"/>
+		<typeAlias type="com.yw.home.board.impl.BoardDTO" alias="BoardDTO"/>
+		<typeAlias type="com.yw.home.board.notice.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.yw.home.board.qna.QnaDTO" alias="QnaDTO"/>
 		<typeAlias type="java.lang.String" alias="String"/>
+		<typeAlias type="java.util.List" alias="List"/>
 	</typeAliases>
+	
 </configuration>
