@@ -19,7 +19,7 @@
 		<div>
 			<div style="text-align: center">
 				<h2>${board}<h2>
-				<br>
+						<br>
 			</div>
 			<table class="table table-striped">
 				<thead>
@@ -44,6 +44,25 @@
 			</table>
 			<button onclick="location='add'">글쓰기</button>
 		</div>
+		<nav aria-label="Page navigation example">
+			<ul class="pagination">
+				<li class="page-item">
+					<a class="page-link" href="#" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				
+				<c:forEach begin="${pager.startNum }" end="${pager.lastNum }" var="i">
+					<li class="page-item"><a class="page-link" href="./list?page=${i}">${i}</a></li>
+				</c:forEach>
+				
+				<li class="page-item">
+					<a class="page-link" href="#" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
 	</section>
 	<!-- footer import -->
 	<c:import url="../template/footer.jsp"></c:import>

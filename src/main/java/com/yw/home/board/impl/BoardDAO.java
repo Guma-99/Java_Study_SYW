@@ -1,12 +1,13 @@
 package com.yw.home.board.impl;
 
 import java.util.List;
-import java.util.Map;
+
+import com.yw.home.util.Pager;
 
 public interface BoardDAO {
 
 	// 글목록
-	public List<BoardDTO> getList(Map<String, Long> map) throws Exception;
+	public List<BoardDTO> getList(Pager pager) throws Exception;
 
 	// 상세보기
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception;

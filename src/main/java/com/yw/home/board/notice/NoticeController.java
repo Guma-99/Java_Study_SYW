@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yw.home.board.impl.BoardDTO;
+import com.yw.home.util.Pager;
 
 @Controller
 @RequestMapping("/notice/*")
@@ -28,12 +29,16 @@ public class NoticeController {
 
 	// 글목록
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public ModelAndView getList(@RequestParam(defaultValue = "1") Long page) throws Exception {
+	public ModelAndView getList(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		List<BoardDTO> ar = noticeService.getList(page);
-		System.out.println("page: " + page);
+		System.out.println(pager);
+//		List<BoardDTO> ar = noticeService.getList(page);
+//		System.out.println("page: " + page);
+		
+		List<BoardDTO> ar = noticeService.getList(pager);
 		
 		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
 		mv.addObject("board", "Notice");
 		mv.setViewName("board/list");
 		
