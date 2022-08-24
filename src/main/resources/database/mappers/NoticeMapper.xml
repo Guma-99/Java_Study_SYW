@@ -6,8 +6,15 @@
 <mapper namespace="com.yw.home.board.notice.NoticeDAO">
 
 	<!-- 글목록 -->
-	<select id="getList" resultType="NoticeDTO">
-		SELECT NUM, TITLE, WRITER, REGDATE, HIT FROM NOTICE ORDER BY NUM DESC
+	<select id="getList" resultType="NoticeDTO" parameterType="java.util.Map">
+		SELECT * FROM
+				(
+					SELECT ROWNUM R, N.* FROM
+							(
+								SELECT * FROM NOTICE ORDER BY NUM DESC
+							) N
+				)
+		WHERE R BETWEEN #{startRow} and #{lastRow}
 	</select>
 
 	<!-- 상세보기 -->
@@ -29,5 +36,10 @@
 	<delete id="setDelete" parameterType="BoardDTO">
 		DELETE NOTICE WHERE NUM = #{num}
 	</delete>
+	
+	<!-- 글 갯수 -->
+	<select id="getCount" resultType="Long">
+		SELECT COUNT(NUM) FROM NOTICE
+	</select>
 
 </mapper>

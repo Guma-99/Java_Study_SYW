@@ -1,6 +1,7 @@
 package com.yw.home.board.notice;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,9 @@ public class NoticeDAO implements BoardDAO {
 
 	// 글목록
 	@Override
-	public List<BoardDTO> getList() throws Exception {
+	public List<BoardDTO> getList(Map<String, Long> map) throws Exception {
 		
-		return sqlSession.selectList(NAMESPACE + "getList");
+		return sqlSession.selectList(NAMESPACE + "getList", map);
 	}
 
 	// 상세보기
@@ -49,6 +50,13 @@ public class NoticeDAO implements BoardDAO {
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		
 		return sqlSession.delete(NAMESPACE + "setDelete", boardDTO);
+	}
+	
+	// 글 갯수
+	@Override
+	public Long getCount() throws Exception {
+	
+		return sqlSession.selectOne(NAMESPACE + "getCount");
 	}
 
 }

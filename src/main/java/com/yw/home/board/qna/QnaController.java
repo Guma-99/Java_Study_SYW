@@ -22,12 +22,13 @@ public class QnaController {
 
 	// 글목록
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public ModelAndView getList() throws Exception {
-		List<BoardDTO> ar = qnaService.getList();
+	public ModelAndView getList(Long page) throws Exception {
+		List<BoardDTO> ar = qnaService.getList(page);
 		ModelAndView mv = new ModelAndView();
 
 		mv.addObject("list", ar);
-		mv.setViewName("qna/list");
+		mv.addObject("board", "Qna");
+		mv.setViewName("board/list");
 
 		return mv;
 
@@ -40,7 +41,7 @@ public class QnaController {
 
 		model.addAttribute("boardDTO", boardDTO);
 
-		return "qna/detail";
+		return "board/detail";
 
 	}
 
@@ -48,7 +49,7 @@ public class QnaController {
 	@RequestMapping(value = "add", method = RequestMethod.GET)
 	public String setAdd() throws Exception {
 
-		return "qna/add";
+		return "board/add";
 
 	}
 
@@ -70,7 +71,7 @@ public class QnaController {
 		boardDTO = qnaService.getDetail(boardDTO);
 
 		mv.addObject("boardDTO", boardDTO);
-		mv.setViewName("qna/update");
+		mv.setViewName("board/update");
 
 		return mv;
 
@@ -96,7 +97,7 @@ public class QnaController {
 	@RequestMapping(value = "reply", method = RequestMethod.GET)
 	public String setReply() throws Exception {
 		
-		return "qna/reply";
+		return "board/reply";
 
 	}
 	@RequestMapping(value = "reply", method = RequestMethod.POST)

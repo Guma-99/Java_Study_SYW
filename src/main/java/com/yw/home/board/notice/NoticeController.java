@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.ModelAndViewDefiningException;
 
 import com.yw.home.board.impl.BoardDTO;
 
@@ -19,15 +19,24 @@ public class NoticeController {
 
 	@Autowired
 	private NoticeService noticeService;
+	
+	@ModelAttribute("board ")
+	public String getBoard() {
+		
+		return "Notice";
+	}
 
 	// 글목록
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public ModelAndView getList() throws Exception {
-		List<BoardDTO> ar = noticeService.getList();
+	public ModelAndView getList(@RequestParam(defaultValue = "1") Long page) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		List<BoardDTO> ar = noticeService.getList(page);
+		System.out.println("page: " + page);
 		
 		mv.addObject("list", ar);
-		mv.setViewName("notice/list");
+		mv.addObject("board", "Notice");
+		mv.setViewName("board/list");
+		
 		
 		return mv;
 		
@@ -40,7 +49,7 @@ public class NoticeController {
 		
 		model.addAttribute("boardDTO", boardDTO);
 		
-		return "notice/detail";
+		return "board/detail";
 				
 	}
 	
@@ -48,7 +57,7 @@ public class NoticeController {
 	@RequestMapping(value = "add", method = RequestMethod.GET)
 	public String setAdd() throws Exception {
 		
-		return "notice/add";
+		return "board/add";
 		
 	}
 	@RequestMapping(value = "add", method = RequestMethod.POST)
@@ -69,7 +78,7 @@ public class NoticeController {
 		boardDTO = noticeService.getDetail(boardDTO);
 		
 		mv.addObject("boardDTO", boardDTO);
-		mv.setViewName("notice/update");
+		mv.setViewName("board/update");
 		
 		return mv;
 		

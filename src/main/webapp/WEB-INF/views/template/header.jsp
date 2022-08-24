@@ -15,7 +15,9 @@
 			<div class="collapse navbar-collapse" id="navbarText">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link"
-						href="../board/list.do">공지사항</a></li>
+						href="../notice/list">공지사항</a></li>
+						<li class="nav-item"><a class="nav-link"
+						href="../qna/list">QnA</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="../bankbook/list.do">상품리스트</a></li>
 					<li class="nav-item"><a class="nav-link"

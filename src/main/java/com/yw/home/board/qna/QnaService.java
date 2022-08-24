@@ -16,7 +16,7 @@ public class QnaService implements BoardService{
 
 	// 글목록
 	@Override
-	public List<BoardDTO> getList() throws Exception {
+	public List<BoardDTO> getList(Long page) throws Exception {
 		return qnaDAO.getList();
 	}
 
