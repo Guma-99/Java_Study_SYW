@@ -7,17 +7,22 @@ import org.springframework.stereotype.Service;
 
 import com.yw.home.board.impl.BoardDTO;
 import com.yw.home.board.impl.BoardService;
+import com.yw.home.util.Pager;
 
 @Service
-public class QnaService implements BoardService{
-	
+public class QnaService implements BoardService {
+
 	@Autowired
 	private QnaDAO qnaDAO;
 
 	// 글목록
 	@Override
-	public List<BoardDTO> getList(Long page) throws Exception {
-		return qnaDAO.getList();
+	public List<BoardDTO> getList(Pager pager) throws Exception {
+		Long totalCount = qnaDAO.getCount(pager);
+		pager.getNum(totalCount);
+		pager.getRowNum();
+
+		return qnaDAO.getList(pager);
 	}
 
 	// 상세보기
@@ -25,11 +30,15 @@ public class QnaService implements BoardService{
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
 		return qnaDAO.getDetail(boardDTO);
 	}
-	
+
 	// 글쓰기
 	@Override
 	public int setAdd(BoardDTO boardDTO) throws Exception {
-		return qnaDAO.setAdd(boardDTO);
+		System.out.println("Insert 전: ");
+		int result = qnaDAO.setAdd(boardDTO);
+		System.out.println("Insert 후: ");
+
+		return result;
 	}
 
 	// 글 수정
@@ -43,9 +52,21 @@ public class QnaService implements BoardService{
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		return qnaDAO.setDelete(boardDTO);
 	}
-	
+
 	// 댓글
-	public int setReply(BoardDTO boardDTO) throws Exception {
-		return qnaDAO.setReply(boardDTO);
+	public int setReply(QnaDTO qnaDTO) throws Exception {
+
+		BoardDTO boardDTO = qnaDAO.getDetail(qnaDTO);
+		QnaDTO parnet = (QnaDTO) boardDTO;
+
+		qnaDTO.setRef(parnet.getRef());
+		qnaDTO.setStep(parnet.getStep() + 1);
+		qnaDTO.setDepth(parnet.getDepth() + 1);
+		
+		qnaDAO.setStepUpdate(parnet);
+		int result = qnaDAO.setReplyAdd(qnaDTO);
+
+		return result; 
 	}
+
 }

@@ -5,13 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.ModelAndViewDefiningException;
 
 import com.yw.home.board.impl.BoardDTO;
+import com.yw.home.util.Pager;
 
 @Controller
 @RequestMapping("/qna/*")
@@ -20,13 +22,20 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 
+	@ModelAttribute("board")
+	public String getBoard() {
+
+		return "Qna";
+	}
+
 	// 글목록
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public ModelAndView getList(Long page) throws Exception {
-		List<BoardDTO> ar = qnaService.getList(page);
+	public ModelAndView getList(Pager pager) throws Exception {
+		List<BoardDTO> ar = qnaService.getList(pager);
 		ModelAndView mv = new ModelAndView();
 
 		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
 		mv.addObject("board", "Qna");
 		mv.setViewName("board/list");
 
@@ -94,21 +103,24 @@ public class QnaController {
 	}
 
 	// 댓글
-	@RequestMapping(value = "reply", method = RequestMethod.GET)
-	public String setReply() throws Exception {
-		
-		return "board/reply";
+	@GetMapping("reply")
+	public ModelAndView setReply(BoardDTO boardDTO, ModelAndView mv) throws Exception {
 
-	}
-	@RequestMapping(value = "reply", method = RequestMethod.POST)
-	public ModelAndView setReply(BoardDTO boardDTO) throws Exception {
-		ModelAndView mv = new ModelAndView();
-
-		int result = qnaService.setReply(boardDTO);
-
-		mv.setViewName("redirect:./list");
+		mv.addObject("boardDTO", boardDTO);
+		mv.setViewName("board/reply");
 
 		return mv;
+	}
+
+	@PostMapping("reply")
+	public String setReply(QnaDTO qnaDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		int result = qnaService.setReply(qnaDTO);
+		
+		return "redirect:./list";
+//		return "board/reply";
 
 	}
+
 }

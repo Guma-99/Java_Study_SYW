@@ -31,13 +31,16 @@
 						<th>writer</th>
 					</tr>
 					<tr>
-						<td><input type="text" name="num"></td>
+						<input type="hidden" name="num" value="${boardDTO.num}">
 						<td><input type="text" name="title"></td>
 						<td><input type="text" name="contents"></td>
+						<td><input type="text" name="writer"></td>
 					</tr>
 				</table>
 				<br>
-				<button onclick="submit">완료</button>
+				<div class="mb-3">
+					<button class="btn btn-success">WRITE</button>
+				</div>
 			</div>
 		</section>
 	</form>

@@ -1,7 +1,6 @@
 package com.yw.home.board.qna;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.yw.home.board.impl.BoardDAO;
 import com.yw.home.board.impl.BoardDTO;
+import com.yw.home.util.Pager;
 
 @Repository
 public class QnaDAO implements BoardDAO {
@@ -19,9 +19,9 @@ public class QnaDAO implements BoardDAO {
 
 	// 글목록
 	@Override
-	public List<BoardDTO> getList(Map<String, Long> map) throws Exception {
+	public List<BoardDTO> getList(Pager pager) throws Exception {
 
-		return sqlSession.selectList(NAMESPACE + "getList", map);
+		return sqlSession.selectList(NAMESPACE + "getList", pager);
 	}
 
 	// 상세보기
@@ -56,6 +56,24 @@ public class QnaDAO implements BoardDAO {
 	public int setReply(BoardDTO boardDTO) throws Exception {
 
 		return sqlSession.insert(NAMESPACE + "setReply", boardDTO);
+	}
+	
+	public int setReplyAdd(BoardDTO boardDTO) throws Exception {
+		
+		return sqlSession.insert(NAMESPACE + "setReplyAdd", boardDTO);
+	}
+
+	public int setStepUpdate(QnaDTO qnaDTO) throws Exception {
+			
+		return sqlSession.update(NAMESPACE + "setStepUpdate", qnaDTO);
+			
+		}
+
+	// 글 갯수
+	@Override
+	public Long getCount(Pager pager) throws Exception {
+
+		return sqlSession.selectOne(NAMESPACE + "getCount", pager);
 	}
 
 }
