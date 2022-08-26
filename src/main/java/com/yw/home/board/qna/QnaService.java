@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.yw.home.board.impl.BoardDTO;
 import com.yw.home.board.impl.BoardService;
@@ -33,9 +34,9 @@ public class QnaService implements BoardService {
 
 	// 글쓰기
 	@Override
-	public int setAdd(BoardDTO boardDTO) throws Exception {
+	public int setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
 		System.out.println("Insert 전: ");
-		int result = qnaDAO.setAdd(boardDTO);
+		int result = qnaDAO.setAdd(boardDTO, files);
 		System.out.println("Insert 후: ");
 
 		return result;

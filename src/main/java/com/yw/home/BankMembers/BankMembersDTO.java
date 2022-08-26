@@ -2,13 +2,17 @@ package com.yw.home.BankMembers;
 
 import java.util.List;
 
+import com.yw.home.bankaccount.BankAccountDTO;
+import com.yw.home.file.FileDTO;
+
 public class BankMembersDTO {
 	private String userName;
 	private String password;
 	private String name;
 	private String email;
 	private String phone;
-	private List<BankMembersDTO> bankMembersDTO;
+	private List<BankAccountDTO> bankAccountDTO;
+	private BankMembersFileDTO bankMembersFileDTO;
 
 	public String getUserName() {
 		return userName;
@@ -40,7 +44,17 @@ public class BankMembersDTO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-
+	public List<BankAccountDTO> getBankAccountDTO() {
+		return bankAccountDTO;
+	}
+	public void setBankAccountDTO(List<BankAccountDTO> bankAccountDTO) {
+		this.bankAccountDTO = bankAccountDTO;
+	}
+	public BankMembersFileDTO getBankMembersFileDTO() {
+		return bankMembersFileDTO;
+	}
+	public void setBankMembersFileDTO(BankMembersFileDTO bankMembersFileDTO) {
+		this.bankMembersFileDTO = bankMembersFileDTO;
+	}
 	
 }

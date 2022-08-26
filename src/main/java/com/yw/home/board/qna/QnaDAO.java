@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.yw.home.board.impl.BoardDAO;
 import com.yw.home.board.impl.BoardDTO;
@@ -33,7 +34,7 @@ public class QnaDAO implements BoardDAO {
 
 	// 글쓰기
 	@Override
-	public int setAdd(BoardDTO boardDTO) throws Exception {
+	public int setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
 
 		return sqlSession.insert(NAMESPACE + "setAdd", boardDTO);
 	}

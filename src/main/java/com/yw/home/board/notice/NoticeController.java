@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yw.home.board.impl.BoardDTO;
@@ -70,10 +70,12 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public ModelAndView setAdd(BoardDTO boardDTO) throws Exception {
+	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile[] files) throws Exception {
 		ModelAndView mv = new ModelAndView();
-
-		int result = noticeService.setAdd(boardDTO);
+		
+		System.out.println("noticeUpload 파일명: " + files);
+		
+		int result = noticeService.setAdd(boardDTO, files);
 
 		mv.setViewName("redirect:./list");
 

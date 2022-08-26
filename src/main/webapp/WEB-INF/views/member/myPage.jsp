@@ -63,6 +63,11 @@
 					<p>개설일 : ${dto.accountDate }</p>
 				</c:forEach>
 		</div>
+		<div class="row">
+			<img alt="" src="../resources/upload/member/${dto.bankMembersFileDTO.fileName}">
+			이미지가 안 보여요 :( 
+			안 해 개빡쳐
+		</div>
 	</section>
 	<c:import url="../template/footer.jsp"></c:import>
 

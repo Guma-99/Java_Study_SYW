@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yw.home.board.impl.BoardDTO;
@@ -63,10 +64,10 @@ public class QnaController {
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public ModelAndView setAdd(BoardDTO boardDTO) throws Exception {
+	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
 		ModelAndView mv = new ModelAndView();
 
-		int result = qnaService.setAdd(boardDTO);
+		int result = qnaService.setAdd(boardDTO, files);
 
 		mv.setViewName("redirect:./list");
 

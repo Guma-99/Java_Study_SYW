@@ -16,7 +16,7 @@
 	<c:import url="../template/header.jsp"></c:import>
 	<section class="container-fluid col-lg-8 mt-5 ml-5">
 		<div>
-			<form action="./join.do" method="post">
+			<form action="./join.do" method="post" enctype = "multipart/form-data">
 				<div class="col-md-3">
 					<label for="inputEmail4" class="form-label">아이디</label>
 					<input type="text" name="userName" class="form-control" id="inputEmail4">
@@ -37,6 +37,10 @@
 					<label for="inputCity" class="form-label">전화번호</label>
 					<input type="text" name="phone"class="form-control" id="inputCity"
 						placeholder="하이픈(-)없이 숫자만 입력">
+				</div>
+				<div class="col-md-3">
+					<label for="photo" class="form-label">첨부파일</label>
+					<input type="file" name="photo" class="form-control" id="photo">
 				</div>
 				<div class="col-12">
 					<button type="submit" class="btn btn-primary">가입하기</button>

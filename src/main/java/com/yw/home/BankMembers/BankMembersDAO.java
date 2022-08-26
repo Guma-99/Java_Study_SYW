@@ -22,7 +22,7 @@ public class BankMembersDAO {
 	}
 
 	public int setJoin(BankMembersDTO bankMembersDTO) throws Exception {
-
+		
 		return sqlSession.insert(NAMESPACE + "setJoin", bankMembersDTO);
 	}
 
@@ -34,6 +34,10 @@ public class BankMembersDAO {
 	
 	public BankMembersDTO getMyPage(BankMembersDTO bankMembersDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + "getMyPage", bankMembersDTO);
+	}
+	
+	public int setAddFile(BankMembersFileDTO bankMembersFileDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE + "setAddFile", bankMembersFileDTO);
 	}
 
 }
