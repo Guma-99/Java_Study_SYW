@@ -15,7 +15,7 @@ public interface BoardDAO {
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception;
 
 	// 글쓰기
-	public int setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception; 
+	public int setAdd(BoardDTO boardDTO) throws Exception; 
 	
 	// 글수정
 	public int setUpdate(BoardDTO boardDTO) throws Exception; 
@@ -25,5 +25,8 @@ public interface BoardDAO {
 	
 	// 글 갯수
 	public Long getCount(Pager pager) throws Exception;
+	
+	// 파일
+	public int setAddFile(BoardFileDTO boardFileDTO) throws Exception;
 	
 }

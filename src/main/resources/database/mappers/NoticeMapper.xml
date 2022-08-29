@@ -47,8 +47,7 @@
 
 	<!-- 글 삭제 -->
 	<delete id="setDelete" parameterType="BoardDTO">
-		DELETE NOTICE WHERE NUM =
-		#{num}
+		DELETE NOTICE WHERE NUM = #{num}
 	</delete>
 
 	<!-- 글 갯수 -->
@@ -64,5 +63,10 @@
 
 		LIKE '%'||#{search}||'%'
 	</select>
+	
+	<insert id="setAddFile" parameterType="BoardFileDTO">
+		INSERT INT NOTICEFILE
+		VALUES(FILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
+	</insert>
 
 </mapper>

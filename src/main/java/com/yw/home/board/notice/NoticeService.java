@@ -1,9 +1,6 @@
 package com.yw.home.board.notice;
 
-import java.io.File;
-import java.util.Calendar;
 import java.util.List;
-import java.util.UUID;
 
 import javax.servlet.ServletContext;
 
@@ -12,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.yw.home.board.impl.BoardDTO;
+import com.yw.home.board.impl.BoardFileDTO;
 import com.yw.home.board.impl.BoardService;
+import com.yw.home.util.FileManger;
 import com.yw.home.util.Pager;
 
 
@@ -23,7 +22,7 @@ public class NoticeService implements BoardService{
 	private NoticeDAO noticeDAO;
 	
 	@Autowired
-	private ServletContext servletContext;
+	private FileManger fileManger;
 
 	// 글목록
 	@Override
@@ -124,44 +123,23 @@ public class NoticeService implements BoardService{
 
 	// 글쓰기
 	@Override
-public int setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
+public int setAdd(BoardDTO boardDTO, MultipartFile [] files, ServletContext servletContext) throws Exception {
 		
-		//int result = noticeDAO.setAdd(boardDTO, files);
+		int result = noticeDAO.setAdd(boardDTO);
+		String path = "resources/upload/notice";
 		
-			String realPath = servletContext.getRealPath("resources/upload/notice");
-			System.out.println("notice: " + realPath);
-			
-			File file = new File(realPath);
-			
-			if(!file.exists()) {
-				file.mkdirs();
+		for(MultipartFile multipartFile: files) {
+			if(multipartFile.isEmpty()) {
+				continue;
 			}
-			
-			for(MultipartFile mf: files) {
-				if(mf.isEmpty()) {
-					continue;
-				}
-				 file = new File(realPath);
-				// 저장하는 코드
-			String fileName = UUID.randomUUID().toString();
-			
-			System.out.println("noticeFileName: "+ fileName);
-			
-			Calendar ca = Calendar.getInstance();
-			Long time = ca.getTimeInMillis();
-			
-			fileName = fileName + "_" + mf.getOriginalFilename();
-			System.out.println("noticeFileName: "+ fileName);
-			
-			file = new File(file, fileName);
-			
-			mf.transferTo(file);
-			}
-			
-			
-			
+		String fileName = 	fileManger.saveFile(servletContext, path, multipartFile);
+		BoardFileDTO boardFileDTO = new BoardFileDTO();
+		boardFileDTO.setFileName(fileName);
+		boardFileDTO.setOriName(multipartFile.getOriginalFilename());
+		boardFileDTO.setNum(boardDTO.getNum());
+		}
 		
-		return 0;
+		return result;//
 	}
 
 	// 글 수정

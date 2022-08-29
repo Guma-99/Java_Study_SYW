@@ -57,7 +57,7 @@ public class BankMembersController {
 
 	// Post
 	@RequestMapping(value = "join.do", method = RequestMethod.POST)
-	public String join(BankMembersDTO bankMembersDTO, MultipartFile photo) throws Exception {
+	public String join(BankMembersDTO bankMembersDTO, MultipartFile photo, HttpSession session) throws Exception {
 		System.out.println("Join Post 실행");
 		System.out.println(photo);
 		
@@ -65,7 +65,7 @@ public class BankMembersController {
 		System.out.println("upload 파라미터명: " + photo.getName());
 		System.out.println("upload 파일 크기: " + photo.getSize());
 		
-		int result = bankMembersService.setJoin(bankMembersDTO, photo);
+		int result = bankMembersService.setJoin(bankMembersDTO, photo, session.getServletContext());
 		//System.out.println(result == 1);
 
 		return "redirect:../member/login.do";
@@ -104,8 +104,12 @@ public class BankMembersController {
 		System.out.println("MyPage Get 실행");
 
 		BankMembersDTO bankMembersDTO = (BankMembersDTO) session.getAttribute("member");
-		Map<String, Object> map = bankMembersService.getMyPage(bankMembersDTO);
-		mv.addObject("map", map);
+//		Map<String, Object> map = bankMembersService.getMyPage(bankMembersDTO);
+//		mv.addObject("map", map);
+		
+		bankMembersDTO = bankMembersService.getMyPage(bankMembersDTO);
+		
+		mv.addObject("dto", bankMembersDTO);
 		
 		mv.setViewName("member/myPage");
 

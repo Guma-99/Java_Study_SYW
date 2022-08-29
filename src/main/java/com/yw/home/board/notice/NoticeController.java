@@ -2,6 +2,8 @@ package com.yw.home.board.notice;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -70,12 +72,12 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile[] files) throws Exception {
+	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile[] files, ServletContext servletContext) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
 		System.out.println("noticeUpload 파일명: " + files);
 		
-		int result = noticeService.setAdd(boardDTO, files);
+		int result = noticeService.setAdd(boardDTO, files, servletContext);
 
 		mv.setViewName("redirect:./list");
 

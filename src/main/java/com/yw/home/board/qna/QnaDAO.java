@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.yw.home.board.impl.BoardDAO;
 import com.yw.home.board.impl.BoardDTO;
+import com.yw.home.board.impl.BoardFileDTO;
 import com.yw.home.util.Pager;
 
 @Repository
@@ -34,7 +35,7 @@ public class QnaDAO implements BoardDAO {
 
 	// 글쓰기
 	@Override
-	public int setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
+	public int setAdd(BoardDTO boardDTO) throws Exception {
 
 		return sqlSession.insert(NAMESPACE + "setAdd", boardDTO);
 	}
@@ -54,27 +55,28 @@ public class QnaDAO implements BoardDAO {
 	}
 
 	// 댓글
-	public int setReply(BoardDTO boardDTO) throws Exception {
 
-		return sqlSession.insert(NAMESPACE + "setReply", boardDTO);
-	}
-	
-	public int setReplyAdd(BoardDTO boardDTO) throws Exception {
-		
-		return sqlSession.insert(NAMESPACE + "setReplyAdd", boardDTO);
+	public int setReplyAdd(QnaDTO qnaDTO) throws Exception {
+
+		return sqlSession.insert(NAMESPACE + "setReplyAdd", qnaDTO);
 	}
 
 	public int setStepUpdate(QnaDTO qnaDTO) throws Exception {
-			
+
 		return sqlSession.update(NAMESPACE + "setStepUpdate", qnaDTO);
-			
-		}
+
+	}
 
 	// 글 갯수
 	@Override
 	public Long getCount(Pager pager) throws Exception {
 
 		return sqlSession.selectOne(NAMESPACE + "getCount", pager);
+	}
+
+	@Override
+	public int setAddFile(BoardFileDTO boardFileDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE + "setAddFile", boardFileDTO);
 	}
 
 }

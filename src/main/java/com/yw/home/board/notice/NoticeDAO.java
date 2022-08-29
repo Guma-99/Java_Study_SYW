@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.yw.home.board.impl.BoardDAO;
 import com.yw.home.board.impl.BoardDTO;
+import com.yw.home.board.impl.BoardFileDTO;
 import com.yw.home.util.Pager;
 
 @Repository
@@ -34,7 +35,7 @@ public class NoticeDAO implements BoardDAO {
 
 	// 글쓰기
 	@Override
-	public int setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
+	public int setAdd(BoardDTO boardDTO) throws Exception {
 		
 		return sqlSession.insert(NAMESPACE + "setAdd", boardDTO);
 	}
@@ -58,6 +59,13 @@ public class NoticeDAO implements BoardDAO {
 	public Long getCount(Pager pager) throws Exception {
 	
 		return sqlSession.selectOne(NAMESPACE + "getCount", pager);
+	}
+	
+	
+	@Override
+	public int setAddFile(BoardFileDTO boardFileDTO) throws Exception
+	{
+		return sqlSession.insert(NAMESPACE + "setAddFIle", boardFileDTO);
 	}
 
 }
