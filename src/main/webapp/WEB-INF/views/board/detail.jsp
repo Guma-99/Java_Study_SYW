@@ -42,6 +42,14 @@
 						<td>${boardDTO.regDate}</td>
 						<td>${boardDTO.hit}</td>
 					</tr>
+					<tr>
+						<th>청부파일</th>
+						<td><c:forEach items="${boardDTO.boardFileDTOs}" var="fileDTO">
+								<p>
+									<a href="../resources/upload/${board}/${fileDTO.fileName}">${fileDTO.oriName}</a>
+								</p>
+							</c:forEach></td>
+					</tr>
 
 				</tbody>
 			</table>
@@ -53,11 +61,11 @@
 			</c:if>
 		</div>
 	</section>
-	
-		<div class="row">
-			<a href="./reply?num=${boardDTO.num }" class="btn btn-danger">Reply</a>
-		</div>
-		
+
+	<div class="row">
+		<a href="./reply?num=${boardDTO.num }" class="btn btn-danger">Reply</a>
+	</div>
+
 	<!-- footer import -->
 	<c:import url="../template/footer.jsp"></c:import>
 

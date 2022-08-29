@@ -42,37 +42,38 @@
 				</c:forEach> --%>
 				<tr>
 					<th>ID</th>
-					<td>${map.dto.userName}</td>
+					<td>${requestScope.dto.userName}</td>
 				</tr>
 				<tr>
 					<th>NAME</th>
-					<td>${map.dto.name}</td>
+					<td>${dto.name}</td>
 				</tr>
 				<tr>
 					<th>EMAIL</th>
-					<td>${map.dto.email}</td>
+					<td>${dto.email}</td>
 				</tr>
 				<tr>
 					<th>PHONE</th>
-					<td>${map.dto.phone}</td>
+					<td>${dto.phone}</td>
 				</tr>
 			</table>
-				<c:forEach items="${map.list}" var="dto">
-					<p>통장번호 : ${dto.accountNum }</p>
-					<p>통장이름 : ${dto.bankBookDTO.bookName}</p>
-					<p>개설일 : ${dto.accountDate }</p>
-				</c:forEach>
+			<c:forEach items="${dto.bankAccountDTO}" var="dto">
+				<p>통장번호 : ${pageScope.dto.accountNum }</p>
+				<p>통장이름 : ${dto.bankBookDTO.bookName}</p>
+				<p>개설일 : ${dto.accountDate }</p>
+			</c:forEach>
 		</div>
 		<div class="row">
-			<img alt="" src="../resources/upload/member/${dto.bankMembersFileDTO.fileName}">
-			이미지가 안 보여요 :( 
-			안 해 개빡쳐
+			<img alt=""
+				src="../resources/upload/member/${dto.bankMembersFileDTO.fileName}">
+			이미지가 안 보여요 :(
 		</div>
 	</section>
 	<c:import url="../template/footer.jsp"></c:import>
 
-	<scriptsrc ="https://cdn.jsdelivr.net/npm/bootstrap
-		@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-		crossorigin="anonymous"> </script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+		crossorigin="anonymous"></script>
 </body>
 </html>

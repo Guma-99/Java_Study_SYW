@@ -2,7 +2,7 @@ package com.yw.home.board.qna;
 
 import java.util.List;
 
-import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +28,7 @@ public class QnaController {
 	@ModelAttribute("board")
 	public String getBoard() {
 
-		return "Qna";
+		return "qna";
 	}
 
 	// 글목록
@@ -66,10 +66,10 @@ public class QnaController {
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile [] files, ServletContext servletContext) throws Exception {
+	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile [] files, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 
-		int result = qnaService.setAdd(boardDTO, files, servletContext);
+		int result = qnaService.setAdd(boardDTO, files, session.getServletContext());
 
 		mv.setViewName("redirect:./list");
 

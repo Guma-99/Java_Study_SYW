@@ -137,6 +137,7 @@ public int setAdd(BoardDTO boardDTO, MultipartFile [] files, ServletContext serv
 		boardFileDTO.setFileName(fileName);
 		boardFileDTO.setOriName(multipartFile.getOriginalFilename());
 		boardFileDTO.setNum(boardDTO.getNum());
+		noticeDAO.setAddFile(boardFileDTO);
 		}
 		
 		return result;//

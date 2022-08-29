@@ -3,6 +3,7 @@ package com.yw.home.board.notice;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +27,7 @@ public class NoticeController {
 	@ModelAttribute("board")
 	public String getBoard() {
 
-		return "Notice";
+		return "notice";
 	}
 
 	// 글목록
@@ -72,12 +73,12 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile[] files, ServletContext servletContext) throws Exception {
+	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile[] files, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
 		System.out.println("noticeUpload 파일명: " + files);
 		
-		int result = noticeService.setAdd(boardDTO, files, servletContext);
+		int result = noticeService.setAdd(boardDTO, files, session.getServletContext());
 
 		mv.setViewName("redirect:./list");
 
@@ -102,7 +103,7 @@ public class NoticeController {
 		int result = noticeService.setUpdate(boardDTO);
 
 		return "redirect:./detail?num=" + boardDTO.getNum();
-
+		
 	}
 
 	// 글 삭제
