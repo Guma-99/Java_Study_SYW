@@ -69,3 +69,66 @@ function check() {
         });
     }
 };
+
+function joinCheck() {
+    const joinForm = document.getElementById("joinForm");
+    const joinButton = document.getElementById("joinButton");
+    const id = document.getElementById("id");
+    const pw = document.getElementById("pw");
+    const pw2 = document.getElementById("pw2");
+    const names = document.getElementById("names");
+    const email = document.getElementById("email");
+    const phone = document.getElementById("phone");
+
+    id.addEventListener("blur", function(){
+        let d = id.value;
+        console.log(d.length);
+
+        if(d.length < 2){
+            document.getElementById("id_div").style.display="block";
+        } else document.getElementById("id_div").style.display="none";
+    });
+
+    pw.addEventListener("blur", function() {
+        let p = pw.value;
+        
+        if(p.value.length < 6) {
+            document.getElementById("pw_div").style.display="block";
+        } else document.getElementById("pw_div").style.display="none";
+    });
+
+    pw2.addEventListener("blur", function() {
+        let p2 = pw2.value;
+        let p = pw.value;
+        
+        if(p2 != p) {
+            document.getElementById("pw2_div").style.display="block";
+        } else document.getElementById("pw2_div").style.display="none";
+    });
+
+    names.addEventListener("blur", function(){
+        let n = names.value;
+
+        if(n.length < 1) {
+            document.getElementById("names_div").style.display="block";
+            
+        } else document.getElementById("names_div").style.display="none";
+    })
+
+    email.addEventListener("blur", function(){
+        let e = email.value;
+
+        if(e.length < 1) {
+            document.getElementById("email_div").style.display="block";
+        } else document.getElementById("email_div").style.display="none";
+    })
+
+    phone.addEventListener("blur", function(){
+        let ph = phone.value;
+
+        if(ph.length < 1) {
+            document.getElementById("phone_div").style.display="block";
+        } else document.getElementById("phone_div").style.display="none";
+    })
+
+}
