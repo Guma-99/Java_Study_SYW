@@ -34,7 +34,7 @@
 								<li class="nav-item"><a class="nav-link"
 									href="../member/login.do">로그인</a></li>
 								<li class="nav-item"><a class="nav-link"
-									href="../member/join.do">회원가입</a></li>
+									href="../member/agree">회원가입</a></li>
 							</c:otherwise>
 						</c:choose>
 				</ul>
