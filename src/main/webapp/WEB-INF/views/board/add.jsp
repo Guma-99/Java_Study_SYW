@@ -44,7 +44,7 @@
 					<label for="contents" class="form-label">Contents</label>
 					<textarea name="contents" class="form-control" id="contents"rows="3"></textarea>
 				</div>
-				<div>
+				<div id="attachmentFile" style="display:none;">
 					<label for="writer" class="form-label">첨부파일</label>
 					<br>
 				</div>
@@ -64,7 +64,7 @@
 				<div class="mb-3" id="addFiles">
 					<br>
 					<button type="button" class="btn btn-secondary" id="fileAdd">파일추가</button>
-				</div>	
+				</div>
 				<div class="mb-3">
 					<button type="submit" class="btn btn-success">작성</button>
 				</div>

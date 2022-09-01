@@ -60,11 +60,11 @@
 				<a href="./add?num=${boardDTO.num}">가입하기</a>
 			</c:if>
 		</div>
+		<div class="row">
+			<a href="./reply?num=${boardDTO.num }" class="btn btn-danger">Reply</a>
+		</div>
 	</section>
 
-	<div class="row">
-		<a href="./reply?num=${boardDTO.num }" class="btn btn-danger">Reply</a>
-	</div>
 
 	<!-- footer import -->
 	<c:import url="../template/footer.jsp"></c:import>
