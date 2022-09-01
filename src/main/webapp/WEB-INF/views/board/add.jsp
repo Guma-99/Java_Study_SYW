@@ -27,39 +27,51 @@
 	<!-- header import -->
 	<c:import url="../template/header.jsp"></c:import>
 
-	<h1>${board}</h1>
-	<form action="add" method="POST" enctype="multipart/form-data">
-		<section class="container-fluid col-lg-8 mt-5">
-			<div>
-				<div style="text-align: center">
-					<h2>추가</h2>
+	<h1 class="align-center">${board}Add Page</h1>
+	<section class="container-fluid col-lg-4">
+
+		<div class="row">
+			<form action="./add" method="post" enctype="multipart/form-data">
+				<div class="mb-3">
+					<label for="title" class="form-label">Title</label>
+					<input type="text" name="title" class="form-control" id="title" placeholder="제목 입력">
+				</div>
+				<div class="mb-3">
+					<label for="writer" class="form-label">Writer</label>
+					<input type="text" name="writer" class="form-control" id="Writer" placeholder="작성자 입력">
+				</div>
+				<div class="mb-3">
+					<label for="contents" class="form-label">Contents</label>
+					<textarea name="contents" class="form-control" id="contents"rows="3"></textarea>
+				</div>
+				<div>
+					<label for="writer" class="form-label">첨부파일</label>
 					<br>
 				</div>
-				<table class="table table-striped">
-					<tr>
-						<th>title</th>
-						<th>writer</th>
-						<th>content</th>
-					</tr>
-					<tr>
-						<input type="hidden" name="num" value="${boardDTO.num}">
-						<td><input type="text" name="title"></td>
-						<td><input type="text" name="writer"></td>
-						<td>
-							<textarea class="form-control" name="contents" id="contents" rows="3">${boardDTO.contents}</textarea>
-						</td>
-						<td><input type="file" name="files"></td>
-						<td><input type="file" name="files"></td>
-						<td><input type="file" name="files"></td>
-					</tr>
-				</table>
-				<br>
-				<div class="mb-3">
-					<button class="btn btn-success">WRITE</button>
+				<!-- <div class="mb-3">
+					<label for="files" class="form-label">File</label>
+					<input type="file" name="files" class="form-control" id="files">
 				</div>
-			</div>
-		</section>
-	</form>
+				<div class="mb-3">
+					<label for="files" class="form-label">File</label> <input
+						type="file" name="files" class="form-control" id="files">
+				</div>
+				<div class="mb-3">
+					<label for="files" class="form-label">File</label> <input
+						type="file" name="files" class="form-control" id="files">
+				</div> -->
+
+				<div class="mb-3" id="addFiles">
+					<br>
+					<button type="button" class="btn btn-secondary" id="fileAdd">파일추가</button>
+				</div>	
+				<div class="mb-3">
+					<button type="submit" class="btn btn-success">작성</button>
+				</div>
+
+			</form>
+		</div>
+	</section>
 	<!-- footer import -->
 	<c:import url="../template/footer.jsp"></c:import>
 
@@ -70,6 +82,10 @@
 
 	<script type="text/javascript">
 		$("#contents").summernote();
-		</script>
+	</script>
+
+	<script src="/resources/js/board.js"></script>
+	
+	
 </body>
 </html>
