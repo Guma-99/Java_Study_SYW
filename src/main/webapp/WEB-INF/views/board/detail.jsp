@@ -43,7 +43,7 @@
 						<td>${boardDTO.hit}</td>
 					</tr>
 					<tr>
-						<th>청부파일</th>
+						<th>첨부파일</th>
 						<td><c:forEach items="${boardDTO.boardFileDTOs}" var="fileDTO">
 								<p>
 									<a href="../resources/upload/${board}/${fileDTO.fileName}">${fileDTO.oriName}</a>
