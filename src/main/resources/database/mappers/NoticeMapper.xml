@@ -28,8 +28,7 @@
 	</select>
 
 	<!-- 상세보기 -->
-	<select id="getDetail" parameterType="BoardDTO"
-		resultType="NoticeDTO">
+	<select id="getDetail" parameterType="BoardDTO" resultMap="getDetailResult">
 		SELECT N.*, NF.*
 		FROM NOTICE N
 			LEFT JOIN

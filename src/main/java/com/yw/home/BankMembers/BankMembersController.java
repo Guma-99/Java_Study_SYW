@@ -114,6 +114,7 @@ public class BankMembersController {
 //		mv.addObject("map", map);
 		
 		bankMembersDTO = bankMembersService.getMyPage(bankMembersDTO);
+		System.out.println(bankMembersDTO.getBankMembersFileDTO().getFileName());
 		
 		mv.addObject("dto", bankMembersDTO);
 		

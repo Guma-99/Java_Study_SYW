@@ -84,7 +84,7 @@
 		$("#contents").summernote();
 	</script>
 
-	<script src="/resources/js/board.js"></script>
+	<script src="/resources/js/board_files.js"></script>
 	
 	
 </body>

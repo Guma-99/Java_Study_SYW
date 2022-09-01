@@ -52,7 +52,7 @@
 					<input type="file" name="photo" class="form-control" id="photo">
 				</div>
 				<div class="col-12">
-					<button type="button" id="joinButton" class="btn btn-primary">가입하기</button>
+					<button type="submit" id="joinButton" class="btn btn-primary">가입하기</button>
 					<br>
 				</div>
 			</form>
