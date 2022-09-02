@@ -99,8 +99,10 @@ const fileAdd = document.getElementById("fileAdd"); // button
     });
 
     addFiles.addEventListener("click", function(event){
+        let button = event.target;
         if(event.target.classList[0] =='del') {
-            alert("파일 삭제 alert");
+            document.getElementById("file" + button.title).remove();
+            count--;
         }
     });
     

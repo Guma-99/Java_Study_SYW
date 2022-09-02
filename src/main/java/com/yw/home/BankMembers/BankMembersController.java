@@ -39,7 +39,7 @@ public class BankMembersController {
 		System.out.println("Login Post 실행");
 
 		bankMembersDTO = bankMembersService.getLogin(bankMembersDTO);
-		System.out.println(bankMembersDTO);
+		System.out.println("로그인: " + bankMembersDTO);
 
 		HttpSession session = request.getSession();
 		session.setAttribute("member", bankMembersDTO);
