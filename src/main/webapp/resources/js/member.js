@@ -7,6 +7,7 @@ const password = document.getElementById("password");
 const empty_userId = document.getElementById("userId");
 const empty_password = document.getElementById("password");
 
+
 btn.addEventListener("click", function(){
     let u = userId.value;
     let p = password.value;
@@ -80,55 +81,100 @@ function joinCheck() {
     const email = document.getElementById("email");
     const phone = document.getElementById("phone");
 
+      //Check 결과
+      let idCheck=false;
+      let pwCheck=false;
+      let pwEqualCheck=false;
+      let nameCheck=false;
+      let emailCheck=false;
+      let phoneCheck=false;
+
+
+    joinButton.addEventListener("click", function(){
+        if(idCheck && pwCheck && pwEqualCheck) {
+            alert("회원 가입이 완료되었습니다.");
+            joinForm.submit();
+        } else alert("필수 사항을 입력해 주세요.");
+    });
+
     id.addEventListener("blur", function(){
         let d = id.value;
         console.log(d.length);
 
+        idCheck = false;
+
         if(d.length < 2){
             document.getElementById("id_div").style.display="block";
-        } else document.getElementById("id_div").style.display="none";
+        } else {
+            document.getElementById("id_div").style.display="none";
+            idCheck = true;
+        }
     });
 
     pw.addEventListener("blur", function() {
         let p = pw.value;
+
+        pwCheck = false;
         
-        if(p.value.length < 6) {
+        if(p.length < 6) {
             document.getElementById("pw_div").style.display="block";
-        } else document.getElementById("pw_div").style.display="none";
+        } else {
+            document.getElementById("pw_div").style.display="none";
+            pwCheck = true;
+        }
     });
 
     pw2.addEventListener("blur", function() {
         let p2 = pw2.value;
-        let p = pw.value;
+        let p = pw.value;   
+
+        pwEqualCheck = false;
         
         if(p2 != p) {
             document.getElementById("pw2_div").style.display="block";
-        } else document.getElementById("pw2_div").style.display="none";
+        } else {
+            document.getElementById("pw2_div").style.display="none";
+            pwEqualCheck = true;
+        }
     });
 
     names.addEventListener("blur", function(){
         let n = names.value;
 
+        nameCheck = false;
+
         if(n.length < 1) {
             document.getElementById("names_div").style.display="block";
-            
-        } else document.getElementById("names_div").style.display="none";
+        } else {
+            document.getElementById("names_div").style.display="none";
+            nameCheck = true;
+        }
     })
 
     email.addEventListener("blur", function(){
         let e = email.value;
 
+        emailCheck = false;
+
         if(e.length < 1) {
             document.getElementById("email_div").style.display="block";
-        } else document.getElementById("email_div").style.display="none";
+        } else {
+            document.getElementById("email_div").style.display="none";
+            emailCheck = true;
+        }
     })
 
     phone.addEventListener("blur", function(){
         let ph = phone.value;
 
+        phoneCheck = false;
+
         if(ph.length < 1) {
             document.getElementById("phone_div").style.display="block";
-        } else document.getElementById("phone_div").style.display="none";
+        } else {
+            document.getElementById("phone_div").style.display="none";
+            phoneCheck = true;
+        }
     })
 
 }

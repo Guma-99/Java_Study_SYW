@@ -19,13 +19,13 @@
 		<section class="col-lg-6 container-fluid mt-4">
 			<div class="mb-3">
 				<label for="userId" class="form-label">ID</label>
-				<input type="text" name="userName" value="about" class="form-control" id="userId" aria-describedby="emailHelp">
+				<input type="text" name="userName" value="docker" class="form-control" id="userId" aria-describedby="emailHelp">
 				<div class="empty_userId" id="empty_userId"><div class = "userId_message"><strong>아이디</strong>를 입력해 주세요.</div></div>
 			</div>
 			
 			<div class="mb-3">
 				<label for="password" class="form-label">PW</label>
-				<input type="password" name="password" value="about" class="form-control" id="password">
+				<input type="password" name="password" value="docker" class="form-control" id="password">
 				<div class="empty_password" id="empty_password"><div class= = "password_message"><strong>비밀번호</strong>를 입력해 주세요.</div></div>
 			</div>
 			
