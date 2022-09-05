@@ -79,8 +79,19 @@ public class NoticeController {
 		System.out.println("noticeUpload 파일명: " + files);
 		
 		int result = noticeService.setAdd(boardDTO, files, session.getServletContext());
+		
+		String message = "등록 실패!";
+		if(result > 0) {
+			message = "등록 성공!";
+		}
+		
+		mv.addObject("result", result);
+		mv.addObject("message", message);
+		mv.addObject("url", "list");
+		
+		mv.setViewName("common/result");
 
-		mv.setViewName("redirect:./list");
+		//mv.setViewName("redirect:./list");
 
 		return mv;
 

@@ -35,7 +35,9 @@ public class BankMembersController {
 	}
 
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
-	public String login(HttpServletRequest request, BankMembersDTO bankMembersDTO, Model model) throws Exception {
+	public ModelAndView login(HttpServletRequest request, BankMembersDTO bankMembersDTO, Model model) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
 		System.out.println("Login Post 실행");
 
 		bankMembersDTO = bankMembersService.getLogin(bankMembersDTO);
@@ -43,8 +45,22 @@ public class BankMembersController {
 
 		HttpSession session = request.getSession();
 		session.setAttribute("member", bankMembersDTO);
+		
+		int result = 0;
+		String message = "로그인 실패 !";
+		String url = "./login.do";
+		if(bankMembersDTO != null) {
+			result = 1;
+			message = "로그인 성공 !";
+			url = "../";
+		}
 
-		return "redirect:../";
+		mv.addObject("result", result);
+		mv.addObject("message", message);
+		mv.addObject("url", url);
+		mv.setViewName("common/result");
+		
+		return mv;
 	}
 
 	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
