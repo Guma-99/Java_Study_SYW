@@ -53,8 +53,8 @@
 			<!-- Comment insert -->
 			<div class="row">
 				<div class="mb-3">
-					<label for="writer" class="form-label">USERNAME</label> <input
-						type="text" class="form-control" id="writer">
+					<label for="writer" class="form-label">USERNAME</label>
+					<input type="text" class="form-control" id="writer">
 				</div>
 				<div class="mb-3">
 					<label for="contents" class="form-label">WRITER CONTENTS</label>
@@ -80,8 +80,7 @@
 				<button type="button" style="display: none;" class="btn btn-primary" id="up" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">
 					Open modal for @getbootstrap</button>
 
-				<div class="modal fade" id="exampleModal" tabindex="-1"
-					aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -90,19 +89,20 @@
 							</div>
 							<div class="modal-body">
 								<form>
+									<input type="hidden" id="num">
 									<div class="mb-3">
 										<label for="recipient-name" class="col-form-label">writer</label>
-										<input type="text" class="form-control" id="recipient-name">
+										<input type="text" class="form-control" id="updateWriter">
 									</div>
 									<div class="mb-3">
 										<label for="message-text" class="col-form-label">contents</label>
-										<textarea class="form-control" id="message-text"></textarea>
+										<textarea class="form-control" id="updateContents"></textarea>
 									</div>
 								</form>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-								<button type="button" class="btn btn-primary">Send message</button>
+								<button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="update">Send message</button>
 							</div>
 						</div>
 					</div>

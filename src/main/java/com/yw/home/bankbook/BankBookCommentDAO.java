@@ -16,6 +16,10 @@ public class BankBookCommentDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.yw.home.bankbook.BankBookCommentDAO.";
 	
+	public int setCommentUpdate(BankBookCommentDTO bankBookCommentDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setCommentUpdate", bankBookCommentDTO);
+	}
+	
 	public int setCommentDelete(BankBookCommentDTO bankBookCommentDTO) throws Exception {
 		return sqlSession.delete(NAMESPACE+"setCommentDelete", bankBookCommentDTO);
 	}
