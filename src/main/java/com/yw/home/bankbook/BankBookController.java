@@ -1,7 +1,9 @@
 package com.yw.home.bankbook;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,14 @@ public class BankBookController {
 	private BankBookService bankBookService;
 
 	// ------------------------ Comment ------------------------
+	
+	@PostMapping("commentDelete")
+	@ResponseBody
+	public int CommentDelete(BankBookCommentDTO bankBookCommentDTO) throws Exception {
+		int result = bankBookService.setCommentDelete(bankBookCommentDTO);
+		
+		return result;
+	}
 
 //	@RequestMapping(value = "commentList", method = RequestMethod.GET)
 //	public ModelAndView getcommentList(CommentPager commentPager) throws Exception {
@@ -41,9 +51,7 @@ public class BankBookController {
 
 	@RequestMapping(value = "commentList", method = RequestMethod.GET)
 	@ResponseBody
-	public List<BankBookCommentDTO> commentList(CommentPager commentPager) throws Exception {
-		ModelAndView mv = new ModelAndView();
-
+	public Map<String, Object> getcommentList(CommentPager commentPager) throws Exception {
 		List<BankBookCommentDTO> ar = bankBookService.getCommentList(commentPager);
 		System.out.println("CommentList");
 		System.out.println(ar.size());
@@ -52,20 +60,23 @@ public class BankBookController {
 		// DTO == {}
 		// num = 1 == {"num":1, "bookNum":123, "writer":"name"}
 		//[{}]
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", ar);
+		map.put("pager", commentPager);
 
 
-		return ar;
+		return map;
 
 	}
 
 	@RequestMapping(value = "commentAdd", method = RequestMethod.POST)
 	@ResponseBody // jsp를 안거치고 body에 바로 담아 응답으로 내보내겠다.
-	public String commentAdd(BankBookCommentDTO bankBookCommentDTO) throws Exception {
+	public String setCommentAdd(BankBookCommentDTO bankBookCommentDTO) throws Exception {
 
 		ModelAndView mv = new ModelAndView();
+		int result = bankBookService.setCommentAdd(bankBookCommentDTO);
 
 		System.out.println("booknum=" + bankBookCommentDTO.getBookNum());
-		int result = bankBookService.setCommentAdd(bankBookCommentDTO);
 		if (result > 0) {
 			System.out.println("뱅크북 커멘드 성공!");
 		} else {
