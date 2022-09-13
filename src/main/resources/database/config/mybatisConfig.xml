@@ -6,6 +6,7 @@
 		<typeAliases>
 		<typeAlias type="com.yw.home.BankMembers.BankMembersDTO" alias="BankMembersDTO"/>
 		<typeAlias type="com.yw.home.BankMembers.BankMembersFileDTO" alias="BankMembersFileDTO"/>
+		<typeAlias type="com.yw.home.BankMembers.RoleDTO" alias="RoleDTO"/>
 		<typeAlias type="com.yw.home.bankaccount.BankAccountDTO" alias="BankAccountDTO"/>
 		<typeAlias type="com.yw.home.bankbook.BankBookDTO" alias="BankBookDTO"/>
 		<typeAlias type="com.yw.home.bankbook.BankBookCommentDTO" alias="BankBookCommentDTO"/>

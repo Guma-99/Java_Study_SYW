@@ -66,6 +66,11 @@
 		<div class="row">
 			<img alt="" src="../resources/upload/member/${dto.bankMembersFileDTO.fileName}">
 		</div>
+		<div>
+			<c:forEach items="${member.roleDTOs}" var="roleDTO">
+				<div>${roleDTO.roleNum }, ${roleDTO.roleName }</div>
+			</c:forEach>
+		</div>
 	</section>
 	<c:import url="../template/footer.jsp"></c:import>
 
