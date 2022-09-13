@@ -23,14 +23,25 @@
 	
 	<!-- interceptor 설정 -->
 	<!-- interceptor 객체 생성 -->
-	<beans:bean class ="com.yw.home.interceptor.TestInterceptor" id="testInterceptor"></beans:bean>
+	<beans:bean class="com.yw.home.interceptor.AdminCheckInterceptor" id="adminCheckInterceptor"></beans:bean>
+	<beans:bean class="com.yw.home.interceptor.MemberInterceptor" id="memberInterceptor"></beans:bean>
 	
 	<!-- URL - interceptor 맵핑 -->
 	<interceptors>
 		<interceptor>
-			<!-- URL 경로 -->
-			<mapping path="/**"/>
-			<beans:ref bean="testInterceptor"/>
+			<mapping path="/notice/**" />
+			<mapping path="/qna/**"/>
+			<exclude-mapping path="/notice/list" />
+			<exclude-mapping path="/notice/detail" />
+			<exclude-mapping path="/qna/list"/>
+			<beans:ref bean="memberInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/notice/**"/>
+			<exclude-mapping path="/notice/list" />
+			<exclude-mapping path="/notice/detail" />
+			<beans:ref bean="adminCheckInterceptor"/>			
 		</interceptor>
 		
 		<!-- <interceptor>
@@ -39,11 +50,6 @@
 			<exclude-mapping path="/qna/list/"/>
 			<beans:bean class="com.yw.home.interceptor.MemberInterceptor" id="memberInterceptor"></beans:bean>
 		</interceptor> -->
-		
-		<interceptor>
-			<mapping path="/notice/*" />
-			<beans:ref bean="testInterceptor" />
-		</interceptor>
 		
 	</interceptors>
 	<context:component-scan base-package="com.yw.home" />

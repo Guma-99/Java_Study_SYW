@@ -70,6 +70,9 @@
 			<c:forEach items="${member.roleDTOs}" var="roleDTO">
 				<div>${roleDTO.roleNum }, ${roleDTO.roleName }</div>
 			</c:forEach>
+			
+			<h1>현재 등급은 ${member.roleDTOs.get(0).roleName}입니다.</h1>
+			<h1>현재 등급은 ${member.roleDTOs["0"].roleName}입니다.</h1>
 		</div>
 	</section>
 	<c:import url="../template/footer.jsp"></c:import>
