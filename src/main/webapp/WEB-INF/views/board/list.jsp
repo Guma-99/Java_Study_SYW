@@ -116,9 +116,9 @@
 		let k = '${param.kind}';
 		const kind = document.getElementsByClassName("kinds");
 
-		for(let i = 0; i < kinds.length; i++) {
-			if(kinds[i].value == k) {
-				kinds[i].selected = true;
+		for(let i = 0; i < kind.length; i++) {
+			if(kind[i].value == k) {
+				kind[i].selected = true;
 				break;
 			}
 		}

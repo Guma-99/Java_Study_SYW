@@ -53,6 +53,7 @@
 
 				</tbody>
 			</table>
+			
 			<br> <a href="./list.do">리스트 보기</a> <br> <br> <a
 				href="./update.do?bookNum=${boardDTO.num}">수정하기</a> <a
 				href="./delete.do?bookNum=${boardDTO.num}">삭제하기</a>

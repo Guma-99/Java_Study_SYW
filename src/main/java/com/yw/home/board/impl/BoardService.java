@@ -23,4 +23,7 @@ public interface BoardService {
 	
 	// 글 삭제
 	public  int setDelete(BoardDTO boardDTO) throws Exception;
+	
+	//fileDelete
+	public int setFileDelete(BoardFileDTO boardFileDTO, ServletContext servletContext)throws Exception;
 }

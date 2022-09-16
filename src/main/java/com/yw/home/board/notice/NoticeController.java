@@ -2,7 +2,6 @@ package com.yw.home.board.notice;
 
 import java.util.List;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +9,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yw.home.BankMembers.BankMembersDTO;
 import com.yw.home.board.impl.BoardDTO;
+import com.yw.home.board.impl.BoardFileDTO;
 import com.yw.home.util.Pager;
 
 @Controller
@@ -30,6 +32,17 @@ public class NoticeController {
 	public String getBoard() {
 
 		return "notice";
+	}
+	
+	@PostMapping("fileDelete")
+	@ResponseBody
+	public int setFileDelete(BoardFileDTO boardFileDTO, HttpSession session)throws Exception{
+		System.out.println("File Delete");
+		System.out.println("Context : " + session.getServletContext());
+		
+		int result = noticeService.setFileDelete(boardFileDTO, session.getServletContext());
+		
+		return result;
 	}
 
 	// 글목록
@@ -50,10 +63,6 @@ public class NoticeController {
 		mv.addObject("pager", pager);
 		mv.addObject("board", "Notice");
 		mv.setViewName("board/list");
-		
-		if(ar.size() != 0) {
-			throw new Exception();
-		}
 
 		return mv;
 
@@ -111,7 +120,7 @@ public class NoticeController {
 	}
 
 	// 글 수정
-	@RequestMapping(value = "update", method = RequestMethod.GET)
+	@RequestMapping(value = "update")
 	public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView mv) throws Exception {
 		boardDTO = noticeService.getDetail(boardDTO);
 
@@ -131,28 +140,11 @@ public class NoticeController {
 	}
 
 	// 글 삭제
-	@RequestMapping(value = "delete", method = RequestMethod.GET)
 	public String setDelete(BoardDTO boardDTO) throws Exception {
 		int result = noticeService.setDelete(boardDTO);
 
 		return "redirect:./list";
 
-	}
-	
-	@ExceptionHandler(NullPointerException.class)
-	public ModelAndView exceptionTest() {
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("errors/error_404");
-		return mv;
-	}
-	
-	@ExceptionHandler(Exception.class)
-	public ModelAndView exceptionTest2(Exception e) {
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("errors/error_404");
-		return mv;
 	}
 	
 }

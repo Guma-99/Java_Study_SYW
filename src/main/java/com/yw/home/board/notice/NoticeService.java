@@ -23,6 +23,24 @@ public class NoticeService implements BoardService{
 	
 	@Autowired
 	private FileManger fileManger;
+	
+	@Override
+	public int setFileDelete(BoardFileDTO boardFileDTO, ServletContext servletContext) throws Exception {
+		// TODO Auto-generated method stub
+		boardFileDTO = noticeDAO.getFileDetail(boardFileDTO);
+		System.out.println("FileNum : " + boardFileDTO.getFileName());
+		
+		int result = noticeDAO.setFileDelete(boardFileDTO);
+		String path = "resources/upload/notice";
+		System.out.println("DB DELETE : " + result);
+		
+		if(result > 0) {
+			boolean check =fileManger.deleteFile(servletContext, path, boardFileDTO);
+			System.out.println("fileDelete : " + check);
+		}
+		
+		return result;
+	}
 
 	// 글목록
 	@Override
@@ -140,7 +158,7 @@ public int setAdd(BoardDTO boardDTO, MultipartFile [] files, ServletContext serv
 		noticeDAO.setAddFile(boardFileDTO);
 		}
 		
-		return result;//
+		return result;
 	}
 
 	// 글 수정

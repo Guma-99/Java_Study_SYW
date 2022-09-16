@@ -71,6 +71,7 @@
 		DELETE NOTICE WHERE NUM = #{num}
 	</delete>
 
+
 	<!-- 글 갯수 -->
 	<select id="getCount" resultType="Long" parameterType="Pager">
 		SELECT COUNT(NUM) FROM NOTICE
@@ -86,8 +87,15 @@
 	</select>
 	
 	<insert id="setAddFile" parameterType="BoardFileDTO">
-		INSERT INTO NOTICEFILE
-		VALUES(FILE_SEQ.NEXTVAL, #{fileName}, #{oriName}, #{num})
+		INSERT INTO NOTICEFILE 
+		VALUES(#{fileName}, #{oriName}, #{num}, FILE_SEQ.NEXTVAL)
 	</insert>
+	
+	<delete id="setFileDelete" parameterType="BoardFileDTO">
+		DELETE NOTICEFILE WHERE FILENUM=#{fileNum}
+	</delete>
 
+	<select id="getFileDetail" resultType="BoardFileDTO" parameterType="BoardFileDTO">
+		SELECT * FROM NOTICEFILE WHERE FILENUM=#{fileNum}
+	</select>
 </mapper>

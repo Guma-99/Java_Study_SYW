@@ -66,7 +66,7 @@
 					<button type="button" class="btn btn-secondary" id="fileAdd">파일추가</button>
 				</div>
 				<div class="mb-3">
-					<button type="submit" class="btn btn-success">작성</button>
+					<button class="btn btn-success">작성</button>
 				</div>
 
 			</form>
